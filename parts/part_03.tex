@@ -1,0 +1,72 @@
+\chapter{Citations}
+Our bibliography file looks like
+\VerbatimInput[frame=leftline]{willowtreebook.bib}
+We can cite works from the bibliography, like Homer~\cite{Homer:Iliad}, p. 12.
+\begin{Verbatim}[frame=leftline]
+We can cite works from the bibliography, like Homer~\cite{Homer:Iliad}, p. 12.
+\end{Verbatim}
+Compile with \verb!bibtex!.
+\section{Theorems}
+You have the usual theorem environments, like \texttt{amsthm}.
+\begin{theorem}[Pythagoras]
+In any triangle with sides of lengths \(a,b,c\), \(a^2+b^2=c^2\) just when the angle opposite the side of length \(c\) is a right angle.
+\end{theorem}
+\begin{Verbatim}[frame=leftline]
+\begin{theorem}[Pythagoras]
+In any triangle with sides of lengths \(a,b,c\),
+\(a^2+b^2=c^2\) just when the angle opposite the
+side of length \(c\) is a right angle.
+\end{theorem}
+\end{Verbatim}
+\newpage
+\section{Examples}
+I often want to present an example, and make clear where it starts and stops.
+\begin{example}
+The integral
+\[
+\int e^{x^2}x\,dx
+\]
+is evaluated by substituting \(u=x^2\), so
+\[
+\int e^{x^2}x\,dx=\int e^u \frac{du}{2}.
+\]
+\end{example}
+\begin{Verbatim}[frame=leftline]
+\begin{example}
+The integral
+\[
+\int e^{x^2}x\,dx
+\]
+is evaluated by substituting \(u=x^2\), so
+\[
+\int e^{x^2}x\,dx=\int e^u \frac{du}{2}.
+\]
+\end{example}
+\end{Verbatim}
+\section{Preambles}
+We can put some \LaTeX{} code before the hints:
+\begin{Verbatim}[frame=leftline]
+\RenewDocumentCommand\hintsPreamble{}{
+\par\noindent{}
+\textit{When you are describing, \\
+A shape, or sound, or tint; \\
+Don't state the matter plainly, \\
+But put it in a hint; \\
+And learn to look at all things, \\
+With a sort of mental squint.}
+\par\noindent{}---\ {Lewis Carroll}}
+\end{Verbatim}
+\RenewDocumentCommand\hintsPreamble{}{\par\noindent{}\textit{When you are describing, \\ A shape, or sound, or tint; \\ Don't state the matter plainly, \\ But put it in a hint; \\\ And learn to look at all things, \\ With a sort of mental squint.}\par\noindent{}---\ {Lewis Carroll}}
+or before the bibliography:
+\begin{Verbatim}[frame=leftline]
+\RenewDocumentCommand\bibliographyPreamble{}{
+\par\noindent
+\textit{If those books are in agreement with the Quran,
+we have no need of them;
+and if these are opposed to the Quran,
+destroy them.}
+\par\noindent{}---\ {Omar}}
+\end{Verbatim}
+\RenewDocumentCommand\bibliographyPreamble{}{\par\noindent\textit{
+  If those books are in agreement with the Quran, we have no need of them; and if these are opposed to the Quran, destroy them.}\par\noindent{}---\ {Omar}
+}
