@@ -28,14 +28,14 @@
 \expandafter\def\expandafter\@uclclist\expandafter{%
   \@uclclist\scotsMc\scotsMC
 }
-\RequirePackage{etex}
+% \RequirePackage{etex}
 \RequirePackage{newunicodechar}
-\RequirePackage[utf8]{inputenc} % Default input file encoding
+% \RequirePackage[utf8]{inputenc} % Default input file encoding
 \ifdefined\ChineseTextInThisDocument
 \RequirePackage{CJKutf8}
 \let\I\relax
 \NewDocumentCommand\Chinese{m}{\begin{CJK*}{UTF8}{gbsn}#1\end{CJK*}}
-\else 
+\else
 \fi
 \RequirePackage[T1]{fontenc}
 \RequirePackage{lmodern}
@@ -61,7 +61,7 @@ shrink=10]{microtype}
 \mathtoolsset{showonlyrefs,showmanualtags,centercolon,mathic}
 % If we need more room between rows of matrices and arrays, we can write
 % \begin{pmatrix}[1.5]
-% instead of 
+% instead of
 % \begin{pmatrix}
 \RenewDocumentCommand\env@matrix{O{\arraystretch}}
 {%
@@ -75,6 +75,9 @@ shrink=10]{microtype}
 \RequirePackage{longtable}
 \RequirePackage{multicol}
 \setmarginnotes{2em}{3cm}{.5cm}
+
+%.......Alex's commands
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 %.......Indices
 \newcommand{\NotationIndexName}{List of notation}
 \makeindex
@@ -98,7 +101,7 @@ shrink=10]{microtype}
 \renewcommand{\glossitem}[4]{#1 & #2, #4 \\[4pt]}
 \renewcommand{\glossaryspace}{}
 \newcommand{\paddedpagenumber}%
-% Returns the current page number, zero padded, 
+% Returns the current page number, zero padded,
 % so page 3 is 003, page 12 is 012, page 101 is 101
 {%%
 \ifnum\value{page}<100 0\fi%
@@ -243,7 +246,7 @@ Analphabetics
 % depth of numbering of sectioning commands:
 \setsecnumdepth{chapter}
 \maxsecnumdepth{chapter}
-%% depth of table of contents:  
+%% depth of table of contents:
 \setcounter{tocdepth}{0}
 \RenewDocumentCommand\cftpartfont{}{\heading\small}
 \RenewDocumentCommand\cftpartpagefont{}{\normalfont\small}
@@ -331,7 +334,7 @@ before upper={\parindent15pt\noindent}%
 {\IfValueTF{#1}{\imageborderinexample{\includegraphics[#1]{#2}}}{\imageborderinexample{\includegraphics{#2}}}}
 \NewDocumentCommand\inputinexample{m}{\imageborderinexample{\input{#1}}}
 %......Problems
-% To define a new problem, use: 
+% To define a new problem, use:
 % \begin{problem}{<label>} <statement> \end{problem}
 % To give a solution to that problem:
 % \begin{answer{<label>} <statement> \end{answer}
@@ -372,9 +375,9 @@ before upper={\parindent15pt\noindent}%
 \NewDocumentEnvironment{problem*}{m}{\begin{HardProblemTheorem}\label{problem:#1}}{\end{HardProblemTheorem}}
 \newoutputstream{ansout}
 \NewDocumentCommand\printanswers{}{\closeoutputstream{ansout}\input{\jobname.ans}}
-% Unfortunately, some complications involving `at' signs 
+% Unfortunately, some complications involving `at' signs
 % and protection make it apparently necessary to define a
-% \newparagraph symbol, which will later expand to \par. 
+% \newparagraph symbol, which will later expand to \par.
 % Otherwise, we get mysterious errors. We could probably
 % just make use of \protect here.
 \let\newparagraph=\par
@@ -432,13 +435,13 @@ ref=\theenumi.\emph{\alph*}}
 \multiply\mycount by -1
 \advance\mycount by \value{chapter}
 % Second, choose which color scheme to interpolate:
-\ifnum\mycount>9 
-	\advance\mycount -10 
+\ifnum\mycount>9
+	\advance\mycount -10
 	\multiply\mycount by 20
 	\xglobal\colorlet{chpclr}{colorAAA!\the\mycount!colorCCC}
 \else
-	\ifnum\mycount>4 
-		\advance\mycount -5 
+	\ifnum\mycount>4
+		\advance\mycount -5
 		\multiply\mycount by 20
 		\xglobal\colorlet{chpclr}{colorCCC!\the\mycount!colorBBB}
 	\else
