@@ -1,3 +1,3 @@
-# latex-template
+# LaTeX Template
 
-LaTeX template based on the [willowtreebook](https://ctan.org/pkg/willowtreebook) document class by [Ben McKay](https://github.com/Ben-McKay).
+Homework template adapted from Heejin Mun's template on [Overleaf](https://www.overleaf.com/articles/math-453-hw-1/kxfhqwwnygkk).
