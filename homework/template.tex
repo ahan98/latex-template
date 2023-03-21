@@ -1,0 +1,125 @@
+\documentclass{exam}
+
+\usepackage{amsmath,enumitem,wrapfig}
+\usepackage{tikz}
+\usepackage{color}
+% https://wiki.carleton.edu/download/attachments/20155418/fontguide.pdf
+\usepackage{newpxtext,newpxmath}
+
+%%% Header and footer
+\pagestyle{headandfoot}
+
+\newcommand{\course}{Analysis II}
+\newcommand{\name}{Alex Han}
+\newcommand{\pset}{Problem Set 1}
+\newcommand{\duedate}{Feb 1}
+
+\runningheadrule
+\firstpageheadrule
+\firstpageheader{\course}{\name}{\pset}
+\runningheader{\course}{\name}{\pset}
+
+\firstpagefootrule
+\runningfootrule
+\firstpagefooter{}{\thepage\ of \numpages}{}
+\runningfooter{}{\thepage\ of \numpages}{}
+
+\printanswers
+\shadedsolutions
+% http://latexcolor.com/
+\definecolor{SolutionColor}{rgb}{0.96, 0.96, 0.96}
+
+\begin{document}
+\vspace{5mm}
+\begin{questions}
+
+	\question \textbf{M1}
+	\begin{parts}
+		\part
+		Consider the arithmetic computation below.
+		\begin{align}
+			3+4[5-12]-6(3) +(4+0) & =   3+4[5-12]-6(3) +4 \\
+			                      & =   4[5-12]-6(3) +4+3 \\
+			                      & =   20-48-18 +4+3     \\
+			                      & =  -39.\notag
+		\end{align}
+		For each of the steps (1), (2), and (3) identify which of the Axioms of Integer Arithmetic are used in the simplification step.
+
+		\begin{solution}
+			$3+4[5-12]-6(3) +4$....(1) additive identity\\
+			$4[5-12]-6(3) +4+3$ ....(2) commutativity of addition\\
+			$20-48-18 +4+3$ ....(3) distributive
+		\end{solution}
+
+		\part Create and simplify an expression that uses associativity of addition, multiplicative identity, and the distributive law.
+
+		\begin{solution}\\
+			(1) Associativity of addition\\
+			=a + (b + c) = (a + b) + c\\
+			(2) Multiplication identity\\
+			1*a =a\\
+			(3) Distributive law\\
+			a (b + c) = ab + ac\\
+			Example \\
+			$3 + 4(6 + 4) + (7(3) + 5(1))$\\
+			= $(3 + 4(6 + 4)) + 7(3) + 5(1)$ ...used (1)\\
+			= $(3 + (24 + 14)) + 7(3) + 5(1)$ ....used (3)\\
+			= $(3 + 24 + 14) + 21 + 5$ .... used (2)\\
+			= $67$
+		\end{solution}
+
+	\end{parts}
+
+	\newpage
+
+	\question \textbf{M2}
+
+
+	For each statement below determine whether each statement is correct for integers $a$, $b$, and $c$. If the statement is correct, then prove it. If the statement is incorrect, then modify it so that it is correct. Be sure to state which Order Axiom(s) you have applied.
+	\begin{parts}
+		\part If $a<b$, then $c\cdot a< c\cdot b$.
+		\begin{solution}
+			Incorrect.\\
+			If $a<b$, then $c\cdot a< c\cdot b$ when $c>0$
+		\end{solution}
+
+		\part If $a<b$, then $a+c<b+c$.
+		\begin{solution}
+			Correct\\
+			If $a<b$, then we can assume that $a + r= b$, where r is in Z\\
+			Hence, $a + c + r = b + c$, when c is in Z\\
+			Therefore, then $a+c<b+c$.
+
+			If $a<b$, then we can assume that $a + r= b$, where r is in Z\\
+			Hence, $a + c + r = b + c$, when c is in Z\\
+			Therefore, then $a+c<b+c$.
+
+			If $a<b$, then we can assume that $a + r= b$, where r is in Z\\
+			Hence, $a + c + r = b + c$, when c is in Z\\
+			Therefore, then $a+c<b+c$.
+		\end{solution}
+
+		\part If $a<b$, $b<c$, and $c<d$, then $a<d$.
+
+		\begin{solution}
+			With the same way part (b)
+			Since  If $a<b$, then If $a+r=b$, when r is in Z\\
+			and  $b<c$, so it follows that $b+r=c$, it is also same with $a+r+r=b+r=c$\\
+			also, if $c<d$, then $c+r=d$, it is same with $a+r+r+r=b+r+r=c+r=d$\\
+			Therefore, $a+3r=d$\\
+			Hence, $a<d$
+		\end{solution}
+		\part If $a\not > b$ and $a\not< b$, then $a=b$.
+
+		\begin{solution}
+			Given that $a\not > b$ and $a\not< b$\\
+			For $a\not > b$ \\
+			then, it can be either $a < b$ or $a=b$, but $a < b$ is a contradiction by given $a\not< b$.\\
+			For $a\not< b$,\\
+			then,  it can be either $a > b$ or $a=b$, but $a > b$ is a contradiction by given $a\not> b$.\\
+			Therefore, $a=b$.
+		\end{solution}
+	\end{parts}
+
+\end{questions}
+\end{document}
