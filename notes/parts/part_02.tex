@@ -2,43 +2,43 @@
 \section{Definitions}
 We can define a term like \emph{hamster}\define{hamster}, or say that the term hamster\SubIndex{hamster} appears again later.
 \begin{Verbatim}[frame=leftline]
-\chapter{Definitions, Problems and Theorems}
-\section{Definitions}
-We can define a term like \emph{hamster}\define{hamster},
-or say that the term hamster\SubIndex{hamster} appears again later.
+  \chapter{Definitions, Problems and /s}
+  \section{Definitions}
+  We can define a term like \emph{hamster}\define{hamster},
+  or say that the term hamster\SubIndex{hamster} appears again later.
 \end{Verbatim}
 Compile, for a book called \verb!filename.tex!, with
 \begin{Verbatim}[frame=leftline]
-	makeindex filename
+  makeindex filename
 \end{Verbatim}
 We add notation like when we use a variable called \(\omega\),
 we put it in the list of notation.%
 \Notation{omega}{\omega}{A variable called $\omega$}
 \begin{Verbatim}
-We add notation like when we use a variable called \(\omega\),
-we put it in the list of notation.%
-\Notation{omega}{\omega}{A variable called $\omega$}
+  We add notation like when we use a variable called \(\omega\),
+  we put it in the list of notation.%
+  \Notation{omega}{\omega}{A variable called $\omega$}
 \end{Verbatim}
 If you use notation, compile with
 \begin{Verbatim}[frame=leftline]
-	makeindex -s notation.gst -o not.gls not.glo
+  makeindex -s notation.gst -o not.gls not.glo
 \end{Verbatim}
 \section{Problems}
 \begin{problem}{label.for.the.first.problem}
 What is the point of your life?
 \end{problem}
 \begin{answer}{label.for.the.first.problem}
-Your life is pointless.
+  Your life is pointless.
 \end{answer}
 In problem~\ref{problem:label.for.the.first.problem}, we can clearly see ...
 \begin{Verbatim}[frame=leftline]
-		% We add problems by:
-\begin{problem}{label.for.the.first.problem}
-What is the point of your life?
-\end{problem}
-		% and answers by:
-\begin{answer}{label.for.the.first.problem}
-Your life is pointless.
-\end{answer}
-In problem~\ref{problem:label.for.the.first.problem}, we can clearly see ...
+  % We add problems by:
+  \begin{problem}{label.for.the.first.problem}
+  What is the point of your life?
+  \end{problem}
+  % and answers by:
+  \begin{answer}{label.for.the.first.problem}
+    Your life is pointless.
+  \end{answer}
+  In problem~\ref{problem:label.for.the.first.problem}, we can clearly see ...
 \end{Verbatim}
