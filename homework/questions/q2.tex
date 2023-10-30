@@ -1,7 +1,29 @@
 \begin{question}
-	This is a question with no parts.
+  (Chapter 3, Problem 1.1) Let \( \mathbf{X} \) be distributed with density \( f(\mathbf{x} - \xi) = f(x_1-\xi, \ldots, x_n-\xi) \), and let \( \delta \) be equivariant for estimating \( \xi \) with loss function \( L(\xi, d) = \rho(d - \xi) \). Prove that the (a) risk and (b) variance are constant (i.e., do not depend on \( \xi \)).
 \end{question}
 
 \begin{solution}
-	This is a solution.
+  As in the proof from Theorem 1.4~\cite[p.~150]{tpe} that bias is constant, we use the fact that, if \( \mathbf{X} \) has density \( f(\mathbf{x} - \xi) \), then \( \mathbf{X} + \xi \) has density \( f(\mathbf{x}) \). That is, \( E_\xi[\delta(\mathbf{X})] = E_0[\delta(\mathbf{X} + \xi)]\).
+
+  To show that risk (i.e., expected loss) is constant,
+  \[
+    \begin{aligned}
+      E_\xi[L(\xi, \delta(\mathbf{X}))]
+       & = E_0[L(\xi, \delta(\mathbf{X} + \xi))] \\
+       & = E_0[L(\xi, \delta(\mathbf{X}) + \xi)] \\
+       & = E_0[L(0, \delta(\mathbf{X}))],
+    \end{aligned}
+  \]
+  where the second and third equalities follow from the equivariance of \( \delta \) and \( L \), respectively.
+
+  To show that variance is constant,
+  \[
+    \begin{aligned}
+      \mathrm{var}_\xi[\delta(\mathbf{X})]
+       & = \mathrm{var}_0[\delta(\mathbf{X} + \xi)] \\
+       & = \mathrm{var}_0[\delta(\mathbf{X}) + \xi] \\
+       & = \mathrm{var}_0[\delta(\mathbf{X})],
+    \end{aligned}
+  \]
+  where the second equality follows from the equivariance of \( \delta \).
 \end{solution}

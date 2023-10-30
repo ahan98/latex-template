@@ -1,13 +1,32 @@
 %% Packages
 \usepackage{amsmath,enumitem,wrapfig}
+\allowdisplaybreaks
+
 \usepackage{tikz}
 \usepackage{color}
 % https://wiki.carleton.edu/download/attachments/20155418/fontguide.pdf
 \usepackage{newpxtext,newpxmath}
 
+\usepackage[skip=1em]{parskip}
+
 %% Header and footer
 \pagestyle{headandfoot}
 \renewcommand{\author}{Alex Han}
+
+\usepackage[most]{tcolorbox}
+\newtcolorbox{mysolution}{
+  breakable,
+  colback=gray!15,
+  boxrule=0pt,
+  sharp corners,
+  left=5pt,
+  right=5pt,
+  bottom=5pt,
+  top=5pt,
+  parbox=false,
+}
+
+\renewenvironment{solution}{\begin{mysolution}}{\end{mysolution}}
 
 \runningheadrule
 \firstpageheadrule
@@ -20,9 +39,9 @@
 \runningfooter{}{\thepage\ of \numpages}{}
 
 %% Styling
-\printanswers
-\shadedsolutions
-\definecolor{SolutionColor}{rgb}{0.96, 0.96, 0.96} % http://latexcolor.com/
+% \printanswers
+% \shadedsolutions
+% \definecolor{SolutionColor}{rgb}{0.96, 0.96, 0.96} % http://latexcolor.com/
 
 %% Math commands
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}

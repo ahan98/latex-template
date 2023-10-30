@@ -1,0 +1,22 @@
+\begin{question}
+  (Chapter 3, Problem 1.6) Suppose \( \mathbf{X} \) has the joint density \( p_\xi(\mathbf{x}) \coloneqq f(\mathbf{x} - \xi) = f(x_1 - \xi,\ldots, x_n - \xi) \). If \( T \) is a sufficient statistic for the family \( \left\{ P_\xi : \xi \in \mathbb{ R } \right\} \), show that the estimator
+  \[
+    \delta^{*}(\mathbf{x}) \coloneqq \frac{\int_{-\infty}^{\infty} uf(x_1 - u, \ldots, x_n - u)\,du}{\int_{-\infty}^{\infty} f(x_1-u, \ldots, x_n - u)\, du}
+  \]
+  is a function of \( T \) only. [\textit{Hint}: Use the factorization theorem.]
+\end{question}
+
+\begin{solution}
+  For any \( u \in \mathbb{ R } \), it follows from the factorization theorem that
+  \[
+    \begin{aligned}
+       &          & f(\mathbf{x} - u) = h(\mathbf{x}) \cdot g(T(\mathbf{x}), u)                                                                                                                                                                                                                \\
+       & \implies & \delta^{*}(\mathbf{x}) = \frac{\int_{-\infty}^{\infty} u  h(\mathbf{x})g(T(\mathbf{x}), u)\,du}{\int_{-\infty}^{\infty} h(\mathbf{x})g(T(\mathbf{x}), u)\,du} = \frac{\int_{-\infty}^{\infty} u g(T(\mathbf{x}), u)\,du}{\int_{-\infty}^{\infty} g(T(\mathbf{x}), u)\,du}.
+    \end{aligned}
+  \]
+
+  In particular, \( \delta^{*} \) depends on \( \mathbf{x} \) only through \( T(\mathbf{x}) \). Hence \( \delta^{*} \) can be reparameterized as a function of \( T \) only, i.e.,
+  \[
+    \delta^{*}(t) = \frac{\int_{-\infty}^{\infty} u g(t, u)\,du}{\int_{-\infty}^{\infty} g(t, u)\,du}.
+  \]
+\end{solution}

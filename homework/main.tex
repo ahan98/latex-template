@@ -1,14 +1,36 @@
-\documentclass{exam}
+\documentclass[12pt]{exam}
 \input{preamble.tex}
-\newcommand{\course}{COURSE XXX}
-\newcommand{\pset}{Problem Set X}
+\newcommand{\course}{SDS 610}
+\newcommand{\pset}{Assignment 5}
+
+\usepackage{xcolor}
+\definecolor{blush}{rgb}{0.87, 0.36, 0.51}
+\definecolor{brightmaroon}{rgb}{0.76, 0.13, 0.28}
+\usepackage[colorlinks=true, allcolors=brightmaroon, backref=page]{hyperref}
 
 \begin{document}
 
 \begin{questions}
 	\input{questions/q1.tex}
+
 	\newpage
 	\input{questions/q2.tex}
+
+	\newpage
+	\input{questions/q3.tex}
+
+	\newpage
+	\input{questions/q4.tex}
+
+	\newpage
+	\input{questions/q5.tex}
+
+	\newpage
+	% \bibliographystyle{IEEEtran}
+	% \bibliographystyle{elsarticle-harv}
+	% \bibliographystyle{agsm}
+	\bibliographystyle{plain}
+	\bibliography{refs}
 \end{questions}
 
 \end{document}

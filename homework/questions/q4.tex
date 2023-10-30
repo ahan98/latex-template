@@ -1,0 +1,80 @@
+\begin{question}
+  (Chapter 4, Problem 1.1) Suppose \( X_i \mid \lambda \overset{\text{i.i.d.}}{\sim} \mathrm{Poisson}(\lambda)\) and \( \lambda \sim \mathrm{Gamma}(a,b) \). Verify that the posterior distribution is
+  \[
+    \lambda \mid \bar{x} \sim \mathrm{Gamma}\left( a + n\bar{x}, \frac{b}{1+nb} \right),
+  \]
+  and that the Bayes estimator under the loss function \( L_k(\lambda, \delta) \coloneqq  (\lambda - \delta)^2 / \lambda^{k} \), \( k < a \), is
+  \[
+    \delta^{k}(\bar{x}) = \frac{E(\theta^{1-k} \mid  \bar{x})}{E(\theta^{-k} \mid  \bar{x})} = \frac{b}{1+nb} (n\bar{x} + a - k).
+  \]
+\end{question}
+
+\begin{solution}
+  To find the density \( f(\lambda \mid \mathbf{x}) \), notice that
+  \[
+    \begin{aligned}
+       &          & f(\mathbf{x} \mid \lambda)    & \propto \lambda^{\sum x_i} \exp ({-n \lambda})                                           \\
+       & \implies & f(\lambda \mid  \mathbf{x})   & \propto f(\mathbf{x} \mid  \lambda) f(\lambda)                                           \\
+       &          &                               & \propto \lambda^{a + \sum x_i - 1} \exp \left\{ {-\lambda (n + 1 / b)} \right\}          \\
+       &          &                               & = \lambda^{a + n \bar{\mathbf{x}} - 1} \exp \left\{ {-\lambda / [b / (1 + nb)]} \right\} \\
+       & \implies & \lambda \mid \bar{\mathbf{x}} & \sim \mathrm{Gamma}\left(a + n\bar{\mathbf{x}}, \frac{b}{1+nb}\right),
+    \end{aligned}
+  \]
+  where the first implication follows from Bayes rule.
+
+  Define \( \alpha \coloneqq  a + n\bar{\mathbf{x}} \) and \( \beta \coloneqq \frac{b}{1+nb} \) so that \( \lambda \mid \bar{\mathbf{x}} \sim \mathrm{Gamma}(\alpha, \beta) \). Also, define
+  \[
+    f_n(\hat{\lambda}) \coloneqq \lambda^{-k} \left[\lambda - \left(1-\frac{1}{n}\right)\hat{\lambda}\right]^2 \le \lambda^{-k} (\lambda + \abs{\hat{\lambda}})^2 \eqqcolon  g(\hat{\lambda}).
+  \]
+
+  Notice that \( g(\hat{\lambda}) f(\lambda \mid \bar{\mathbf{x}}) \) is integrable. To see this, absorb \( \lambda^{-k} \) into \( f(\lambda \mid \bar{\mathbf{x}}) \) so that
+  \[
+    E_{\lambda \mid \bar{\mathbf{x}} \sim  \mathrm{Gamma}(\alpha, \beta)}[g(\hat{\lambda}) \mid \bar{\mathbf{x}}] = \int \frac{(\lambda + \abs{\hat{\lambda}})^2}{\lambda^{k}} f(\lambda \mid \bar{\mathbf{x}})\, d\lambda \propto E_{\lambda \mid \bar{\mathbf{x}} \sim  \mathrm{Gamma}(\alpha - k, \beta)}[(\lambda + \abs{\hat{\lambda}})^2 \mid \mathbf{x}].
+  \]
+  Since \( f_n(\hat{\lambda}) \le \abs{g(\hat{\lambda})} = g(\hat{\lambda}) \) for all \( n \in \mathbb{ N } \), then \( f_n(x) f(\lambda \mid \bar{\mathbf{x}}) \) is a sequence of integrable functions converging to \( L_k(\lambda, \hat{\lambda}) f(\lambda \mid \bar{\mathbf{x}}) \).
+
+  Denoting risk by
+  \[
+    R(\hat{\lambda} \mid \bar{\mathbf{x}}) \coloneqq  E[L_k(\lambda, \hat{\lambda}) \mid \bar{\mathbf{x}}] = \int \frac{(\lambda - \hat{\lambda})^2}{\lambda^{k}} f(\lambda \mid \bar{\mathbf{x}})\, d\lambda,
+  \]
+  then the Dominated Convergence Theorem implies
+  \[
+    \frac{d}{d \hat{\lambda}} R(\hat{\lambda} \mid \bar{\mathbf{x}}) = \int \frac{d}{d \hat{\lambda}} \frac{(\lambda - \hat{\lambda})^2}{\lambda^{k}} f(\lambda \mid \bar{\mathbf{x}})\,d \lambda = \int -\frac{2}{\lambda^{k}}(\lambda - \hat{\lambda}) f(\lambda \mid \bar{\mathbf{x}})\, d \lambda.
+  \]
+
+  A similar argument can be used to justify differentiation a second time under the integral (using the dominating integrable function \( [2(\lambda + \abs{\hat{\lambda}}) / {\lambda^{k}}] \cdot f(\lambda \mid \bar{\mathbf{x}}) \)). In particular,
+  \[
+    \frac{d^2}{d \hat{\lambda}^2} R(\hat{\lambda} \mid \bar{\mathbf{x}}) = \int \frac{2}{\lambda^{k}} f(\lambda \mid \bar{\mathbf{x}})\, d \lambda > 0
+  \]
+  because the integrand is positive.
+
+  Simplifying,
+  \[
+    \frac{d}{d \hat{\lambda}} R(\hat{\lambda} \mid \bar{\mathbf{x}}) = 0 \implies \int \frac{\lambda - \hat{\lambda}}{\lambda^{k}} f(\lambda \mid \bar{\mathbf{x}})\, d \lambda = 0.
+  \]
+
+  Again, absorbing \( \lambda^{-k} \) into \( f(\lambda \mid \bar{\mathbf{x}}) \),
+  \[
+    \frac{d}{d \hat{\lambda}}R(\lambda \mid \bar{\mathbf{x}}) \propto E_{\lambda \mid \bar{\mathbf{x}} \sim \mathrm{Gamma}(\alpha -k, \beta)}[\lambda - \hat{\lambda} \mid \bar{\mathbf{x}}].
+  \]
+
+  Therefore,
+  \[
+    \begin{aligned}
+       &          & \frac{d}{d \hat{\lambda}}R(\lambda \mid \bar{\mathbf{x}}) = 0                                                                                                              \\
+       & \implies & E_{\lambda \mid \bar{\mathbf{x}} \sim \mathrm{Gamma}(\alpha -k, \beta)}[\lambda - \hat{\lambda} \mid \bar{\mathbf{x}}] = 0                                                 \\
+       & \implies & \hat{\lambda} = E_{\lambda \mid \bar{\mathbf{x}} \sim \mathrm{Gamma}(\alpha -k, \beta)}[\lambda \mid \bar{\mathbf{x}}] = (a + n\bar{x} - k) \left( \frac{b}{1+nb} \right).
+    \end{aligned}
+  \]
+
+  By the second derivative test, the Bayes estimator is
+  \[
+    \delta^{k}(\bar{\mathbf{x}}) \coloneqq \min_{\hat{\lambda}} R(\hat{\lambda} \mid \bar{\mathbf{x}}) = (a + n\bar{x} - k) \left( \frac{b}{1+nb} \right).
+  \]
+
+  Verifying,
+  \[
+    \frac{E[\lambda^{1-k} \mid \bar{\mathbf{x}}]}{E[\lambda^{-k} \mid \bar{\mathbf{x}}]} = \frac{E_{\lambda \mid \bar{\mathbf{x}} \sim \mathrm{Gamma}(\alpha -k, \beta)}[\lambda \mid \bar{\mathbf{x}}]}{E_{\lambda \mid \bar{\mathbf{x}} \sim \mathrm{Gamma}(\alpha -k, \beta)}[1 \mid \bar{\mathbf{x}}]} = \frac{(\alpha - k)\beta}{1} = \delta^{k}(\bar{\mathbf{x}}),
+  \]
+  where the normalizing constants after the first equality cancel.
+\end{solution}

@@ -1,23 +1,54 @@
 \begin{question}
-	This is a question with parts.
+  Find out the assumptions required for Van Trees inequality to hold.
 \end{question}
 
-\begin{parts}
+\begin{solution}
+  Let \( \left\{ P_\theta: \theta \in \Theta \right\} \) be a dominated family of distributions; let \( f(x \mid \theta) \) denote the density of \( P_\theta \) with respect to the dominating measure \( \mu \). Let \( \pi \) denote the probability distribution on \( \Theta \); let \( p(\theta) \) denote the prior density of \( \pi \) with respect to Lebesgue measure \( \lambda \). Also, denote the joint density by \( f(x, \theta) \coloneqq f(x \mid \theta) p(\theta) \).
 
-	\begin{part}
-		This is a part.
-	\end{part}
+  Assume:
 
-	\begin{solution}
-		This is a solution.
-	\end{solution}
+  \begin{enumerate}[label={(A\arabic*)}]
+    \item \( p \) and \( f(x \mid \cdot ) \) are absolutely continuous with respect to \( \lambda \).
+    \item \( \lim_{\abs{\theta} \to \infty} f(x, \theta) = \lim_{\abs{\theta} \to \infty} g(\theta) f(x, \theta) = 0 \) (for \( \mu \) a.e.~\( x \)).
+    \item \( E_{X \mid \theta}\left\{ \frac{\partial }{\partial \theta} \log f(x \mid  \theta) \right\} = 0 \).
+  \end{enumerate}
 
-	\begin{part}
-		This is a part.
-	\end{part}
+  Note that (A1) is mainly for convenience, as it implies that \( p \) and \( f(x \mid  \cdot ) \) are \( \lambda \) a.e.~differentiable (for \( \mu \) a.e. \( x \)) and that the derivatives are \( \lambda \)-integrable.
 
-	\begin{solution}
-		This is a solution.
-	\end{solution}
+  From the lecture notes (week 5), we must show the identity to which the Cauchy-Schwartz inequality is applied. That is,
+  \begin{align*}
+    E g'(\theta) = E\left\{ [\delta(X) - g(\theta)] \frac{\partial \log f(X, \theta)}{\partial \theta}\right\},
+  \end{align*}
+  where the expectation \( E \) is with respect to \( f(x, \theta) \).
 
-\end{parts}
+  Using (A2),
+  \[
+    \begin{aligned}
+          & \int [\delta(x) - g(\theta)] \frac{\partial f(x, \theta)}{\partial \theta}\, d \lambda = \lim_{N \to \infty} \int_{-N}^{N} [\delta(x) - g(\theta)] \frac{\partial f(x, \theta)} {\partial \theta}\, d \lambda \\
+      =\, & \lim_{N \to \infty} \left[ \left\{ \delta(x) - g(\theta) \right\} f(x, \theta) \right]_{\theta = -N}^{\theta = N} - \int_{-N}^{N} \frac{d [\delta(x) - g(\theta)]}{d \theta} f(x, \theta)\,d \lambda          \\
+      =\, & \lim_{N \to \infty} \int_{-N}^N g'(\theta) f(x, \theta)\,d \lambda = \int g'(\theta) f(x, \theta)\, d\lambda.
+    \end{aligned}
+  \]
+
+  Therefore,
+  \[
+    \begin{aligned}
+      E\left\{ [\delta(X) - g(\theta)] \frac{\partial \log f(X, \theta)}{\partial \theta}\right\}
+       & = E_\theta E_{X \mid \theta} [\delta(X) - g(\theta)] \frac{\partial \log f(X, \theta)}{\partial \theta} \\
+       & = \int \int g'(\theta) f(x, \theta)\, d \lambda d \mu                                                   \\
+       & = E g'(\theta).
+    \end{aligned}
+  \]
+
+  Lastly, the lecture notes assumes (A3), from which it follows that
+  \[
+    E \frac{\partial \log f(X \mid \theta)}{\partial \theta} \frac{p'(\theta)}{p(\theta)} = 0.
+  \]
+
+  Lemma 5.14~\cite[p.~122]{tpe} describes sufficient conditions for the interchanging of the integral (with respect to \( \lambda \)) and partial derivative (with respect to \( \theta \)). In particular, (A3) holds if \( E_{X \mid \theta} [\delta(X)^2] < \infty \), and, for some \( \varepsilon > 0 \), there exists \( b_\theta \) so that
+  \[
+    E_{X \mid \theta}[b_\theta(X)^2] < \infty, \quad \text{and} \quad \left\lvert\frac{f(x \mid \theta + \Delta) - f(x \mid \theta)}{\Delta f(x \mid \theta)}\right\rvert \le b_\theta(x) \quad \text{for all }  \abs{\Delta} < \varepsilon.
+  \]
+
+  Additionally, (A3) holds if \( I(\theta) \) is continuous; in fact, an even weaker (but still sufficient) condition is that \( \sqrt{I(\theta)} \) is locally \( \mu \)-integrable, in which case (A3) holds \( \lambda \) a.e.~\cite{vanTree1995}.
+\end{solution}
